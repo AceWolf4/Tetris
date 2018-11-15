@@ -5,20 +5,19 @@ using UnityEngine;
 public class Spawner : MonoBehaviour {
 
     public GameObject[] TetrisShapes;
-
-    private bool canSpawn = false;
+    
 
 	// Use this for initialization
 	void Start () {
-        Instantiate(TetrisShapes[Random.Range(0, 6)],transform.position+new Vector3(0,-1,0),Quaternion.identity);
-        
+        spawnNext();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (canSpawn)
-        {
-            Instantiate(TetrisShapes[Random.Range(0, 6)], transform.position + new Vector3(0, -1, 0), Quaternion.identity);
-        }
 	}
+
+    public void spawnNext()
+    {
+        Instantiate(TetrisShapes[Random.Range(0, TetrisShapes.Length)], transform.position + new Vector3(0, -2.4f, 0), Quaternion.identity);
+    }
 }
